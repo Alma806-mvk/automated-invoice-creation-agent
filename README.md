@@ -30,6 +30,9 @@ Turnkey FastMCP server that lets ChatGPT create invoices, track collections, and
    ```
    The server defaults to HTTP transport on `0.0.0.0:8000` at `/mcp`.
 
+### Choosing the FastMCP entrypoint
+When configuring the server in a client (e.g., ChatGPT MCP UI), pick the module path `src/szamlazz_collections_mcp/server.py` and use the inferred object option. The FastMCP app object is exposed as `app` and the file also defines a `run()` helper, so the default inference (`server.py`) works without needing an explicit object name.
+
 ## Environment variables
 See `.env.example` for the full list. Key values:
 - `MCP_TOKEN`: bearer token required for MCP requests.
