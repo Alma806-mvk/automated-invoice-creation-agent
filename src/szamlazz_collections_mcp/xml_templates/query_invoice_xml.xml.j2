@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmlszamlaxml>
+  <szamlaszam>{{ invoice_number }}</szamlaszam>
+  <szamlaagentkulcs>{{ agent_key }}</szamlaagentkulcs>
+  {% if username %}<felhasznalo>{{ username }}</felhasznalo>{% endif %}
+  {% if password %}<jelszo>{{ password }}</jelszo>{% endif %}
+</xmlszamlaxml>
