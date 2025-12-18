@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmlszamlakifizetes>
+  <szamlaszam>{{ invoice_number }}</szamlaszam>
+  <kifizetesDatum>{{ paid_date }}</kifizetesDatum>
+  <osszeg>{{ amount }}</osszeg>
+  <penznem>{{ currency }}</penznem>
+  <szamlaagentkulcs>{{ agent_key }}</szamlaagentkulcs>
+  {% if username %}<felhasznalo>{{ username }}</felhasznalo>{% endif %}
+  {% if password %}<jelszo>{{ password }}</jelszo>{% endif %}
+</xmlszamlakifizetes>

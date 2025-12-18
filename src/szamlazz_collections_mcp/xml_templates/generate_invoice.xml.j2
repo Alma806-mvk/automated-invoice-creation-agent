@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmlszamla>
+  <beallitasok>
+    <szamlaagentkulcs>{{ agent_key }}</szamlaagentkulcs>
+    {% if username %}<felhasznalo>{{ username }}</felhasznalo>{% endif %}
+    {% if password %}<jelszo>{{ password }}</jelszo>{% endif %}
+    <eszamla>true</eszamla>
+  </beallitasok>
+  <fejlec>
+    <keltDatum>{{ issue_date }}</keltDatum>
+    <teljesitesDatum>{{ issue_date }}</teljesitesDatum>
+    <fizetesiHataridoDatum>{{ due_date }}</fizetesiHataridoDatum>
+    <fizmod>{{ payment_method }}</fizmod>
+    <penznem>{{ currency }}</penznem>
+    <szamlaNyelve>{{ invoice_language }}</szamlaNyelve>
+    {% if comment %}<megjegyzes>{{ comment }}</megjegyzes>{% endif %}
+    {% if order_number %}<rendelesSzam>{{ order_number }}</rendelesSzam>{% endif %}
+    {% if external_id %}<rendelesSzam>{{ external_id }}</rendelesSzam>{% endif %}
+  </fejlec>
+  <elado>
+    <!-- Seller data managed in Szamlazz.hu account -->
+  </elado>
+  <vevo>
+    <nev>{{ buyer.name }}</nev>
+    <orszag>{{ buyer.country }}</orszag>
+    <irsz>{{ buyer.zip }}</irsz>
+    <telepules>{{ buyer.city }}</telepules>
+    <cim>{{ buyer.address }}</cim>
+    <email>{{ buyer.email }}</email>
+    {% if buyer.tax_number %}<adoszam>{{ buyer.tax_number }}</adoszam>{% endif %}
+    {% if buyer.identifier %}<azonosito>{{ buyer.identifier }}</azonosito>{% endif %}
+  </vevo>
+  <tetelek>
+  {% for item in items %}
+    <tetel>
+      <megnevezes>{{ item.name }}</megnevezes>
+      <mennyiseg>{{ item.quantity }}</mennyiseg>
+      <mennyisegiEgyseg>db</mennyisegiEgyseg>
+      <nettoEgysegar>{{ item.net_unit_price }}</nettoEgysegar>
+      <afakulcs>{{ item.vat_rate }}</afakulcs>
+      <nettoErtek>{{ item.net_value }}</nettoErtek>
+      <afaErtek>{{ item.vat_value }}</afaErtek>
+      <bruttoErtek>{{ item.gross_value }}</bruttoErtek>
+      {% if item.comment %}<megjegyzes>{{ item.comment }}</megjegyzes>{% endif %}
+    </tetel>
+  {% endfor %}
+  </tetelek>
+</xmlszamla>
